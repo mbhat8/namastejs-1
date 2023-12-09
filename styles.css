@@ -45,3 +45,13 @@
     flex-wrap: wrap;
 
 }
+
+.filter-btn{
+    margin:5px;
+    padding: 10px;
+    margin-left: 5rem;
+    cursor: pointer;
+    background-color: palegreen;
+    border-radius: 20px;
+}
+
