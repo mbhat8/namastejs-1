@@ -1,12 +1,35 @@
 import RestauarantCard from "./RestauarantCard";
 import restaurantList from "../../utils/mockdata";
+import { useState,useEffect } from "react";
+
 const Body=()=>{
+    const [listOfRes,setlistOfRes]=useState(restaurantList);
+    
+    useEffect(()=>{
+        fetchData();
+    },[])
+    
+    const fetchData=async()=>{
+        const data=await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        const json=await data.json();
+        console.log(json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
+        // setlistOfRes(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    } 
+    
     return (
         <div className="body">
-            <button className="filter-btn">Top rated Restaurant</button>
+            <button className="filter-btn" 
+            onClick={()=>{
+                    const filteredList=listOfRes.filter(
+                        (res)=>res.data.avgRating>4.0);
+                        setlistOfRes(filteredList)
+                        // console.log(filteredList)
+                    }}
+            >
+                Top rated Restaurant</button>
             <div className="res-container">
             {
-                restaurantList.map((resturant)=>(<RestauarantCard key={resturant.data.id}resData={resturant}/>))
+                listOfRes.map((resturant)=>(<RestauarantCard key={resturant.data.id}resData={resturant}/>))
             }
             </div>
         </div>
