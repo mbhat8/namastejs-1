@@ -1,8 +1,15 @@
 import { CDN_URL, LOGO_URL } from "../../utils/constants";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 //Header component container
 const Header=()=>{
-    let [btnlogin,setBtnLogin]=useState("Login")
+
+    const [btnameReact,setbtnameReact]=useState("Login")
+    console.log("header Render")
+    useEffect(()=>{
+        console.log("hi")
+    },[btnameReact])
+
+    
     return(
         <div className="header">
              <div className="logo-container">
@@ -16,8 +23,8 @@ const Header=()=>{
                     <li>Cart</li>
                     <li>About Us</li>
                     <button className="login-button" onClick={()=>{
-                        setBtnLogin("Logout")
-                    }}>{btnlogin}</button>
+                        if((btnameReact ==="Login")?setbtnameReact("Logout"):setbtnameReact("Login"));
+                    }}>{btnameReact}</button>
                 </ul>
             </div>
         </div>

@@ -2,10 +2,9 @@
   "name": "namste-react",
   "version": "1.0.0",
   "description": "This is namaste React series",
- 
   "scripts": {
-    "start":"parcel index.html",
-    "build":"parcel build index.html",
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "keywords": [
@@ -26,9 +25,11 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "install": "^0.13.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },  
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.0"
+  },
   "browserslist": [
     "last 2 versions"
   ]
